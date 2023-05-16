@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import Header from "../components/Header";
-import InputTodo from "../components/InputTodo";
-import TodoList from "../components/TodoList";
-import { getTodoList } from "../api/todo";
+import type { TodoType } from 'src/types';
+import { getTodoList } from 'src/api';
+import { Header, InputTodo, TodoList } from 'src/components';
 
 const Main = () => {
-  const [todoListData, setTodoListData] = useState([]);
+  const [todoListData, setTodoListData] = useState<TodoType[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -16,8 +15,8 @@ const Main = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="inner">
+    <div className='container'>
+      <div className='inner'>
         <Header />
         <InputTodo setTodos={setTodoListData} />
         <TodoList todos={todoListData} setTodos={setTodoListData} />
